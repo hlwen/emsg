@@ -25,7 +25,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 #RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 ## 安装yarn
 #RUN apt-get install yarn
-
+RUN npm install
 # 将目录中的文件添加至镜像的 /app 目录中
 ADD . /app
 
