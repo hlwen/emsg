@@ -25,7 +25,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 #RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 ## 安装yarn
 #RUN apt-get install yarn
-RUN npm install
+
 # 将目录中的文件添加至镜像的 /app 目录中
 ADD . /app
 
@@ -33,6 +33,8 @@ ADD . /app
 # 设置工作目录
 WORKDIR /app
 
+#安装项目依赖
+RUN npm install
 #最后我们需要开放mongodb运行的端口27107，我们用ENTRYPOINT指令来定义这个容器
 #开发项目默认端口
 EXPOSE 80
