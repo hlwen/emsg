@@ -10,7 +10,8 @@ RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
 
 # Install MongoDB
 RUN apt-get update
-RUN apt-get install -y -q mongodb-org curl
+RUN apt-get install -y -q mongodb-org
+RUN apt-get install -y -q curl
 #我们需要创建一个数据库目录运行mongodb(因为我们希望它运行还需要提供一个特殊的配置文件)
 
 # MongoDB需要数据目录，让我们在最后一步中执行 Create the MongoDB data directory
