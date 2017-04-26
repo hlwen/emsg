@@ -39,10 +39,10 @@ ADD . /app
 WORKDIR /app
 
 #安装项目依赖
-#RUN yarn | npm install
+RUN yarn | npm install
 #最后我们需要开放mongodb运行的端口27107，我们用ENTRYPOINT指令来定义这个容器
 #开发项目默认端口
 EXPOSE 80
 
-#ENTRYPOINT ["run.sh"]
-ENTRYPOINT ["/usr/bin/mongod"]
+CMD ["run.sh"]
+#ENTRYPOINT ["/usr/bin/mongod"]
