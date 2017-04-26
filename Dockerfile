@@ -45,4 +45,4 @@ WORKDIR /app
 EXPOSE 80
 
 #ENTRYPOINT ["run.sh"]
-ENTRYPOINT ["usr/bin/mongod"]
+ENTRYPOINT ["/usr/bin/mongod"]
