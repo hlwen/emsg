@@ -5,7 +5,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const config = require('./config/')
-const IS_ENV =false// process.env.NODE_ENV == 'production'
+const IS_ENV =process.env.NODE_ENV == 'production'
 
 
 var plugins = [];
@@ -38,7 +38,7 @@ module.exports = {
         // filename: '[name].js?[hash]' //编译后的文件名
         filename: '[name].js' //编译后的文件名
     },
-    watch:true,
+    watch:false,
     devtool:'eval-source-map',
     module: {
         rules: [
