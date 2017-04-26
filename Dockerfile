@@ -17,8 +17,8 @@ RUN apt-get install -y -q mongodb-org
 RUN mkdir -p /data/db
 # 安装 NodeJS 和 npm
 RUN apt-get install -y nodejs npm
-RUN node -v
-RUN npm -v
+RUN /bin/sh -c node -v
+RUN /bin/sh -c npm -v
 #设置淘宝镜像
 RUN npm config set registry https://registry.npm.taobao.org
 
