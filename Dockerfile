@@ -16,7 +16,7 @@ RUN apt-get install -y -q mongodb-org curl
 # MongoDB需要数据目录，让我们在最后一步中执行 Create the MongoDB data directory
 RUN mkdir -p /data/db
 # 安装 NodeJS 和 npm
-RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_7.x | -E bash -
 RUN apt-get install -y nodejs npm
 RUN npm -v
 #设置淘宝镜像
