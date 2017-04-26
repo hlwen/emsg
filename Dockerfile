@@ -17,17 +17,19 @@ RUN apt-get install -y -q curl
 # MongoDB需要数据目录，让我们在最后一步中执行 Create the MongoDB data directory
 RUN mkdir -p /data/db
 # 安装 NodeJS 和 npm
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y nodejs npm
 RUN npm -v
 #设置淘宝镜像
 RUN npm config set registry https://registry.npm.taobao.org
+RUN npm install -g n
 
-## 添加10 gen正式apt源来源列表
-#RUN apt-key adv --keyserver hkp://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN ln -sf /usr/local/lib/node_modules/n/bin/n /usr/local/bin/n
+#安装新版nodejs
+RUN n latest
+
+RUN npm -v
 ## 安装yarn
-#RUN apt-get install yarn
+RUN npm install -g yarn
 
 # 将目录中的文件添加至镜像的 /app 目录中
 ADD . /app
@@ -37,7 +39,7 @@ ADD . /app
 WORKDIR /app
 
 #安装项目依赖
-RUN npm install
+RUN yarn | npm install
 #最后我们需要开放mongodb运行的端口27107，我们用ENTRYPOINT指令来定义这个容器
 #开发项目默认端口
 EXPOSE 80

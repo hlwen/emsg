@@ -1,5 +1,5 @@
 #!/bin/bash
-#chown www-data:www-data /app -R
+chown www-data:www-data /app -R
 #安装依赖
 #运行mongodb
 /usr/bin/mongod --fork
