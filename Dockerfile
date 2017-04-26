@@ -39,4 +39,4 @@ RUN npm install
 #开发项目默认端口
 EXPOSE 80
 
-ENTRYPOINT ["run.sh"]
+ENTRYPOINT ["/app/run.sh"]
