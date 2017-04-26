@@ -1,10 +1,6 @@
-# The FROM instruction sets the Base Image for subsequent instructions.
 # 这里我们想要运行最新的mongodb，我们需要添加10gen repo到我们的源
 FROM ubuntu:latest
 MAINTAINER Rex he <helianwen@hotmail.com>
-
-FROM ubuntu:latest
-
 
 # 添加10 gen正式apt源来源列表
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
@@ -20,18 +16,25 @@ RUN apt-get install -y -q mongodb-org
 # MongoDB需要数据目录，让我们在最后一步中执行 Create the MongoDB data directory
 RUN mkdir -p /data/db
 # 安装 NodeJS 和 npm
-RUN apt-get install -y nodejs npm yarn
+RUN apt-get install -y nodejs npm
 #设置淘宝镜像
 RUN npm config set registry https://registry.npm.taobao.org
 
+## 添加10 gen正式apt源来源列表
+#RUN apt-key adv --keyserver hkp://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+## 安装yarn
+#RUN apt-get install yarn
+
 # 将目录中的文件添加至镜像的 /app 目录中
 ADD . /app
+
 
 # 设置工作目录
 WORKDIR /app
 
 #最后我们需要开放mongodb运行的端口27107，我们用ENTRYPOINT指令来定义这个容器
-
+#开发项目默认端口
 EXPOSE 80
 
 ENTRYPOINT ["run.sh"]

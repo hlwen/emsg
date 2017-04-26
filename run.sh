@@ -1,7 +1,7 @@
 #!/bin/bash
 #chown www-data:www-data /app -R
 #安装依赖
-yarn
+yarn || npm install
 
 #运行mongodb
 /usr/bin/mongod --fork
