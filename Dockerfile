@@ -44,4 +44,4 @@ RUN yarn | npm install
 #开发项目默认端口
 EXPOSE 80
 
-ENTRYPOINT ["/app/run.sh"]
+ENTRYPOINT ["run.sh"]
